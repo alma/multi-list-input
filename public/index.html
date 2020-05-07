@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Alma Multi List Input</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="multi-input.css">
+</head>
+<body>
+    <h2>IP Addresses</h2>
+    <div id="ip_addresses"></div>
+    <h2>Emails</h2>
+    <div id="emails"></div>
+    <h2>Tags</h2>
+    <div id="tags"></div>
+
+  <script src="app.js"></script>
+  <script>
+    const tags_element = document.getElementById("tags");
+    const tags_app = Elm.Main.init({
+      node: tags_element,
+      flags: {
+        items: ["manual_review:ask_id", "recov:sms1", "recov:sms2"],
+        list_type: "tags"
+      }
+    });
+    tags_app.ports.itemsUpdate.subscribe(function(newList) {
+      console.log("Tags new list:", newList);
+      tags_app.ports.itemsSaved.send();
+    });
+  </script>
+  <script>
+    const emails_element = document.getElementById("emails");
+    const emails_app = Elm.Main.init({
+      node: emails_element,
+      flags: {
+        items: ["youpi@yopmail.com", "contact@getalma.eu"],
+        list_type: "emails"
+      }
+    });
+    emails_app.ports.itemsUpdate.subscribe(function(newList) {
+      console.log("Emails new list:", newList);
+      emails_app.ports.itemsSaved.send();
+    });
+  </script>
+  <script>
+    const ip_addresses_element = document.getElementById("ip_addresses");
+    const ip_addresses_app = Elm.Main.init({
+      node: ip_addresses,
+      flags: {
+        items: ["127.0.0.1", "0:0:0:0:0:ffff:7f00:1"],
+        list_type: "ips"
+      }
+    });
+
+    ip_addresses_app.ports.itemsUpdate.subscribe(function(newList) {
+      console.log("IP addresses new list:", newList);
+      ip_addresses_app.ports.itemsSaved.send();
+    });
+  </script>
+</body>
+</html>
