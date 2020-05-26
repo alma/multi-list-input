@@ -73,11 +73,6 @@ init flags =
     )
 
 
-defaultSeparators : List String
-defaultSeparators =
-    [ "\n", "\t", " ", "," ]
-
-
 
 -- UPDATE
 
@@ -101,7 +96,7 @@ update msg model =
             if model.updateAllowed then
                 let
                     ( nextState, nextItems, nextCmd ) =
-                        MultiInput.update { separators = defaultSeparators } multiInputMsg model.state model.currentItems
+                        MultiInput.update { separators = ListType.separators model.list_type } multiInputMsg model.state model.currentItems
 
                     acceptedItems =
                         List.filter (ListType.validator model.list_type) nextItems

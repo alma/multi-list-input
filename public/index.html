@@ -14,6 +14,8 @@
     <div id="emails"></div>
     <h2>Tags</h2>
     <div id="tags"></div>
+    <h2>Card Filters</h2>
+    <div id="cards"></div>
 
   <script src="app.js"></script>
   <script>
@@ -57,6 +59,21 @@
     ip_addresses_app.ports.itemsUpdate.subscribe(function(newList) {
       console.log("IP addresses new list:", newList);
       ip_addresses_app.ports.itemsSaved.send();
+    });
+  </script>
+  <script>
+    const card_filters_element = document.getElementById("cards");
+    const card_filters_app = Elm.Main.init({
+      node: cards,
+      flags: {
+        items: ["issuer:La Banque Postale", "brand:visa", "country:FR", "funding:DEBIT", "iin:401030", "card_type:%Visa Electron%"],
+        list_type: "card_filters"
+      }
+    });
+
+    card_filters_app.ports.itemsUpdate.subscribe(function(newList) {
+      console.log("Filters:", newList);
+      card_filters_app.ports.itemsSaved.send();
     });
   </script>
 </body>
