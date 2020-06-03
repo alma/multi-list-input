@@ -126,7 +126,7 @@ ipv6_regex =
 card_filters_regex : String
 card_filters_regex =
     "^("
-        ++ "issuer:[^%]+|"
+        ++ "issuer:%?[^%]+%?|"
         ++ "card_type:[a-zA-Z / ()-]+|card_type:%[a-zA-Z / ()-]+%|"
         ++ "brand:(visa|mastercard|american express)|"
         ++ "country:[A-Z]{2}|"
