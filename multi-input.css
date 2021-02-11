@@ -72,7 +72,7 @@ li.multi-input-list-item {
     padding: var(--padding);
 }
 
-.multi-input-expanding-area > input, .multi-input-expanding-area > pre {
+.multi-input-expanding-area > textarea, .multi-input-expanding-area > pre {
     margin: 0;
     border: none;
     line-height: normal;
@@ -82,7 +82,7 @@ li.multi-input-list-item {
     font-family: inherit;
 }
 
-.multi-input-expanding-area > input {
+.multi-input-expanding-area > textarea {
     width: 100%;
     overflow: hidden;
     position: absolute;

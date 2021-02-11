@@ -17,8 +17,6 @@
     <h2>Card Filters</h2>
     <div id="cards"></div>
 
-<!--    <ul id="ui-id-299" tabindex="0" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" style="display: block; top: 429.817px; left: 264px; width: 343px;"><li class="ui-menu-item"><div id="ui-id-461" tabindex="-1" class="ui-menu-item-wrapper">bite</div></li><li class="ui-menu-item"><div id="ui-id-462" tabindex="-1" class="ui-menu-item-wrapper ui-state-active">delivered_despite_interruption_notice</div></li><li class="ui-menu-item"><div id="ui-id-463" tabindex="-1" class="ui-menu-item-wrapper">disputed</div></li><li class="ui-menu-item"><div id="ui-id-464" tabindex="-1" class="ui-menu-item-wrapper">freeze_related_late_default</div></li><li class="ui-menu-item"><div id="ui-id-465" tabindex="-1" class="ui-menu-item-wrapper">manual_review:next_action_date</div></li><li class="ui-menu-item"><div id="ui-id-466" tabindex="-1" class="ui-menu-item-wrapper">manual_review:next_cation_date:20200626</div></li><li class="ui-menu-item"><div id="ui-id-467" tabindex="-1" class="ui-menu-item-wrapper">manual_review:no_reply_despite_interruption_notice</div></li><li class="ui-menu-item"><div id="ui-id-468" tabindex="-1" class="ui-menu-item-wrapper">meme_cb_mais_tout_le_reste_est_different_:_flag_fr</div></li><li class="ui-menu-item"><div id="ui-id-469" tabindex="-1" class="ui-menu-item-wrapper">orni_compensated</div></li><li class="ui-menu-item"><div id="ui-id-470" tabindex="-1" class="ui-menu-item-wrapper">orni_dispute</div></li><li class="ui-menu-item"><div id="ui-id-471" tabindex="-1" class="ui-menu-item-wrapper">orni_retracted</div></li><li class="ui-menu-item"><div id="ui-id-472" tabindex="-1" class="ui-menu-item-wrapper">recov:next_action_date</div></li><li class="ui-menu-item"><div id="ui-id-473" tabindex="-1" class="ui-menu-item-wrapper">remview:related:unfinished_or_refunded</div></li><li class="ui-menu-item"><div id="ui-id-474" tabindex="-1" class="ui-menu-item-wrapper">review:phone_operator:blacklisted</div></li><li class="ui-menu-item"><div id="ui-id-475" tabindex="-1" class="ui-menu-item-wrapper">review:related:1_installment_paid</div></li><li class="ui-menu-item"><div id="ui-id-476" tabindex="-1" class="ui-menu-item-wrapper">review:related:fraudulent</div></li><li class="ui-menu-item"><div id="ui-id-477" tabindex="-1" class="ui-menu-item-wrapper">review:related:late_or_default</div></li><li class="ui-menu-item"><div id="ui-id-478" tabindex="-1" class="ui-menu-item-wrapper">review:related:late_or_defaultss</div></li><li class="ui-menu-item"><div id="ui-id-479" tabindex="-1" class="ui-menu-item-wrapper">review:related:unfinished_or_refunded</div></li><li class="ui-menu-item"><div id="ui-id-480" tabindex="-1" class="ui-menu-item-wrapper">review:ubble_in_maintenance</div></li><li class="ui-menu-item"><div id="ui-id-481" tabindex="-1" class="ui-menu-item-wrapper">scoring:maybe:incomplete_customer</div></li><li class="ui-menu-item"><div id="ui-id-482" tabindex="-1" class="ui-menu-item-wrapper">test</div></li></ul> -->
-    
   <script src="app.js"></script>
   <script>
     const tags_element = document.getElementById("tags");
@@ -26,7 +24,6 @@
       node: tags_element,
       flags: {
         items: ["manual_review:ask_id", "recov:sms1", "recov:sms2"],
-        auto_complete_items: ["recov:sms1"],
         list_type: "tags"
       }
     });
@@ -41,7 +38,6 @@
       node: emails_element,
       flags: {
         items: ["youpi@yopmail.com", "contact@getalma.eu"],
-        auto_complete_items: [],
         list_type: "emails"
       }
     });
@@ -56,7 +52,6 @@
       node: ip_addresses,
       flags: {
         items: ["127.0.0.1", "0:0:0:0:0:ffff:7f00:1"],
-        auto_complete_items: [],
         list_type: "ips"
       }
     });
@@ -72,7 +67,6 @@
       node: cards,
       flags: {
         items: ["issuer:La Banque Postale", "brand:visa", "country:FR", "funding:DEBIT", "iin:401030", "card_type:%Visa Electron%"],
-        auto_complete_items: [],
         list_type: "card_filters"
       }
     });
