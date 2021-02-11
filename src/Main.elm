@@ -39,12 +39,14 @@ port itemsSaved : (Encode.Value -> msg) -> Sub msg
 
 type alias Flags =
     { items : List String
+    , auto_complete_items : List String
     , list_type : String
     }
 
 
 type alias Model =
     { currentItems : List String
+    , autoCompleteItems : List String
     , savedItems : List String
     , updateAllowed : Bool
     , list_type : ListType
@@ -64,6 +66,7 @@ init flags =
             ListType.fromString flags.list_type
     in
     ( { currentItems = flags.items
+      , autoCompleteItems = flags.auto_complete_items
       , savedItems = flags.items
       , updateAllowed = True
       , list_type = list_type
@@ -79,6 +82,7 @@ init flags =
 
 type Msg
     = MultiInputMsg MultiInput.Msg
+    | SetItem String
     | Saved Encode.Value
 
 
@@ -92,6 +96,14 @@ type Msg
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
+        SetItem item ->
+            ( { model
+                | currentItems = item :: model.currentItems
+                , state = newState model.list_type
+              }
+            , Cmd.none
+            )
+
         MultiInputMsg multiInputMsg ->
             if model.updateAllowed then
                 let
@@ -165,11 +177,19 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
-    MultiInput.view
-        { placeholder = ListType.placeholder model.list_type
-        , toOuterMsg = MultiInputMsg
-        , isValid = ListType.validator model.list_type
-        }
-        []
-        model.currentItems
-        model.state
+    let
+        getOption item =
+            option [ value item ] []
+    in
+    div []
+        [ MultiInput.view
+            { placeholder = ListType.placeholder model.list_type
+            , toOuterMsg = MultiInputMsg
+            , isValid = ListType.validator model.list_type
+            }
+            []
+            model.currentItems
+            model.state
+        , List.map getOption model.autoCompleteItems
+            |> datalist [ id <| ListType.tagId model.list_type ]
+        ]
